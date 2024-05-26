@@ -1,0 +1,11 @@
+[
+  ./git
+  ./gpg
+  ./lf
+  ./k9s
+  ./neovim
+  ./starship
+  ./tmux
+  ./yazi
+  ./zsh
+]
