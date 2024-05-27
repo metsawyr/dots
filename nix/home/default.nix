@@ -73,7 +73,7 @@ in {
     sessionVariables = {
       EDITOR = "nvim";
       SHELL = "${pkgs.zsh}/bin/zsh";
-      FLAKE = "/home/${user}/nixconf";
+      FLAKE = "/home/${user}/dots/nix";
     };
   };
 

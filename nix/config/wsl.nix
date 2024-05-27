@@ -4,7 +4,10 @@
   user,
   ...
 }: {
-  imports = [inputs.nixos-wsl.nixosModules.wsl];
+  imports = [
+  	inputs.nixos-wsl.nixosModules.wsl
+	(fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
+  ];
 
   environment.systemPackages = [
     (import ./win32yank.nix {inherit pkgs;})
@@ -14,6 +17,8 @@
     enable = true;
     defaultUser = user;
   };
+
+  services.vscode-server.enable = true;
 
   # solution adapted from: https://github.com/K900/vscode-remote-workaround
   # more information: https://github.com/nix-community/NixOS-WSL/issues/238 and https://github.com/nix-community/NixOS-WSL/issues/294
