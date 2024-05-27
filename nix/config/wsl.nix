@@ -6,7 +6,10 @@
 }: {
   imports = [
   	inputs.nixos-wsl.nixosModules.wsl
-	(fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master")
+	(fetchTarball {
+		url = "https://github.com/nix-community/nixos-vscode-server/tarball/master";
+		sha256 = "";
+	})
   ];
 
   environment.systemPackages = [
