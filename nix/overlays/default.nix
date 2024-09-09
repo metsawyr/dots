@@ -9,19 +9,19 @@
     # };
   };
 
-  bazel = final: prev: let
-    version = "7.3.1";
-  in {
-    bazel =
-      (prev.bazel_7.override {
-        inherit version;
-      })
-      .overrideAttrs (_: {
-        inherit version;
-        src = prev.fetchurl {
-          url = "https://github.com/bazelbuild/bazel/releases/download/${version}/bazel-${version}-dist.zip";
-          hash = "sha256-8FAfkMn8dM1pM9vcWeF7jWJy1sCfi448QomFxYlxR8c=";
-        };
-      });
-  };
+  # bazel = final: prev: let
+  #   version = "7.3.1";
+  # in {
+  #   bazel =
+  #     (prev.bazel_7.override {
+  #       inherit version;
+  #     })
+  #     .overrideAttrs (_: {
+  #       inherit version;
+  #       src = prev.fetchurl {
+  #         url = "https://github.com/bazelbuild/bazel/releases/download/${version}/bazel-${version}-dist.zip";
+  #         hash = "sha256-8FAfkMn8dM1pM9vcWeF7jWJy1sCfi448QomFxYlxR8c=";
+  #       };
+  #     });
+  # };
 }

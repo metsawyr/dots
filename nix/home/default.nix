@@ -10,7 +10,9 @@
   ]);
 
   tools = with pkgs; [
-  	bazel
+  	bazel_7
+	bazel-gazelle
+	bazel-buildtools
     code-minimap
     curl
     fd
