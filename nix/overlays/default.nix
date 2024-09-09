@@ -1,16 +1,16 @@
 {
   go = final: prev: {
-    go = prev.go_1_22;
+    go = prev.go_1_23;
     gopls = prev.gopls.override {
-      buildGoModule = prev.buildGo122Module;
+      buildGoModule = prev.buildGo123Module;
     };
     golangci-lint = prev.golangci-lint.override {
-      buildGoModule = prev.buildGo122Module;
+      buildGoModule = prev.buildGo123Module;
     };
   };
 
   bazel = final: prev: let
-    version = "7.1.1";
+    version = "7.3.1";
   in {
     bazel =
       (prev.bazel_7.override {
