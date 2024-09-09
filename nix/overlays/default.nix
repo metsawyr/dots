@@ -4,9 +4,9 @@
     gopls = prev.gopls.override {
       buildGoModule = prev.buildGo123Module;
     };
-    golangci-lint = prev.golangci-lint.override {
-      buildGoModule = prev.buildGo123Module;
-    };
+    # golangci-lint = prev.golangci-lint.override {
+    #   buildGoModule = prev.buildGo123Module;
+    # };
   };
 
   bazel = final: prev: let
