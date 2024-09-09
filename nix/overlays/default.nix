@@ -20,7 +20,7 @@
         inherit version;
         src = prev.fetchurl {
           url = "https://github.com/bazelbuild/bazel/releases/download/${version}/bazel-${version}-dist.zip";
-          hash = "sha256-arznxTf+Ja9zdWB3VmGP7ZiqQaZvS682bZgWuJGGIro=";
+          hash = "sha256-8FAfkMn8dM1pM9vcWeF7jWJy1sCfi448QomFxYlxR8c=";
         };
       });
   };
