@@ -34,7 +34,7 @@
       bazelShell = pkgs.buildFHSUserEnv {
         name = "bazel-fhs";
         targetPkgs = pkgs: [
-          pkgs.bazel
+          pkgs.bazel_7
         ];
         runScript = "${pkgs.zsh}/bin/zsh";
       };
