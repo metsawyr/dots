@@ -41,6 +41,7 @@ local lsp_configurations = {
 	nil_ls = {},
 	rust_analyzer = {},
 	golangci_lint_ls = {},
+	elp = {},
 	gopls = {
 		settings = {
 			gopls = {

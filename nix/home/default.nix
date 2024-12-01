@@ -53,6 +53,10 @@
     gcc
     ccls
 
+	# Erlang
+	erlang
+	erlang-language-platform
+
     # NodeJS
     bun
     nodePackages.typescript-language-server
