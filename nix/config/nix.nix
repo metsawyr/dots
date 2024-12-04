@@ -21,6 +21,11 @@
     autoPrune.enable = true;
   };
 
+  systemd.targets.user-daemon = {
+    wants = [ "user@${user}.service" ];
+    wantedBy = [ "multi-user.target" ];
+  };
+
   nix = {
     settings = {
       trusted-users = [user];
