@@ -14,6 +14,11 @@
     enable = true;
     defaultUser = user;
   };
+  wsl.extraBin = with pkgs; [
+	{ src = "${coreutils}/bin/uname"; }
+    { src = "${coreutils}/bin/dirname"; }
+    { src = "${coreutils}/bin/readlink"; }
+  ];
 
   # solution adapted from: https://github.com/K900/vscode-remote-workaround
   # more information: https://github.com/nix-community/NixOS-WSL/issues/238 and https://github.com/nix-community/NixOS-WSL/issues/294
