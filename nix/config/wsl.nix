@@ -6,7 +6,7 @@
 }: {
   imports = [
 	inputs.nixos-wsl.nixosModules.wsl
-	inputs.vscode-server.nixosModules.defaut
+	inputs.vscode-server.nixosModules.default
   ];
 
   environment.systemPackages = [
