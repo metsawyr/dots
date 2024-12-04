@@ -22,6 +22,8 @@
       url = "github:catppuccin/base16";
       flake = false;
     };
+
+	inputs.vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs = {self, ...} @ inputs:
