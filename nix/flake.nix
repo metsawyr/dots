@@ -40,6 +40,19 @@
         ];
         runScript = "${pkgs.zsh}/bin/zsh";
       };
+	  glShell = with pkgs; mkShell {
+		nativeBuildInputs = [
+		  libGL
+		  libxkbcommon
+		  wayland
+		];
+		LD_LIBRARY_PATH = lib.makeLibraryPath [
+		  libGL
+		  libxkbcommon
+		  wayland
+		];
+		shellHook = "zsh";
+	  };
     in {
       formatter.${system} = pkgs.alejandra;
 
@@ -64,6 +77,9 @@
         };
       };
 
-      devShells."x86_64-linux".bazel = bazelShell.env;
+      devShells."x86_64-linux" = {
+		bazel = bazelShell.env;
+		gl = glShell;
+	  };
     };
 }
