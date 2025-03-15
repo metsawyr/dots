@@ -47,7 +47,7 @@
     rustup
 
     # Protobuf
-    buf-language-server
+    buf
 
     # C
     gcc
