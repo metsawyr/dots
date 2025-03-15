@@ -56,7 +56,6 @@
 	# Erlang
 	erlang
 	erlang-language-platform
-	rebar3
 
     # NodeJS
     bun
