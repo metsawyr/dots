@@ -21,14 +21,14 @@
     autoPrune.enable = true;
   };
 
-  services.xserver = {
-	enable = true;
-	displayManager.gdm = {
-	  enable = true;
-	  wayland = true;	
-	};
-	windowManager.hypr.enable = true;
-  };
+	#  services.xserver = {
+	# enable = true;
+	# displayManager.gdm = {
+	#   enable = true;
+	#   wayland = true;	
+	# };
+	# windowManager.hypr.enable = true;
+	#  };
 
   systemd.targets.user-daemon = {
     wants = [ "user@${user}.service" ];
