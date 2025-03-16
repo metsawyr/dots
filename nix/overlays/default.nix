@@ -24,4 +24,29 @@
   #       };
   #     });
   # };
+
+	#  meson = final: prev: {
+	#    meson = prev.meson.overrideAttrs (oldAttrs: rec {
+	#   version = "1.6.1";
+	#      src = final.fetchFromGitHub {
+	#        owner = "mesonbuild";
+	#        repo = "meson";
+	#        tag = version;
+	#        hash = "sha256-t0JItqEbf2YqZnu5mVsCO9YGzB7WlCfsIwi76nHJ/WI=";
+	#      };
+	#    });
+	#  };
+	#
+	#  libqmi = final: prev: {
+	# libqmi = prev.libqmi.override {
+	#      meson = prev.buildPackages.meson.overrideAttrs {
+	#        src = final.fetchFromGitHub {
+	#          owner = "mesonbuild";
+	#          repo = "meson";
+	#          tag = "1.6.1";
+	#          hash = "sha256-t0JItqEbf2YqZnu5mVsCO9YGzB7WlCfsIwi76nHJ/WI=";
+	#        };
+	#      };
+	#    };
+	#  };
 }
