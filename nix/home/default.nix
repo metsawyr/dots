@@ -19,6 +19,7 @@
     htop
     jq
     minikube
+	mise
     neofetch
     nh
     pinentry

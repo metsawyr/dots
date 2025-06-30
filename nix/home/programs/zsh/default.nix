@@ -39,12 +39,9 @@
     envExtra = ''
       export KEYTIMEOUT=1
 	  export PATH=$PATH:$HOME/.local/bin
-	  export PATH=$PATH:$HOME/.local/mise/bin
     '';
 
     initExtra = ''
-	  export PATH=$PATH:$HOME/.local/mise/bin
-
        function zle-keymap-select () {
       case $KEYMAP in
         vicmd) echo -ne '\e[1 q';; # block
