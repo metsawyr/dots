@@ -35,6 +35,7 @@
   	gopls
   	golangci-lint-langserver
   	delve
+	starpls
     # Rust
     rustup
 
