@@ -10,9 +10,6 @@
   ]);
 
   tools = with pkgs; [
-  	bazel_7
-	bazel-gazelle
-	bazel-buildtools
     code-minimap
     curl
     fd
@@ -34,15 +31,6 @@
   ];
 
   langs = with pkgs; [
-    # Go
-    go
-    gopls
-    golangci-lint
-    golangci-lint-langserver
-    golines
-    gotests
-    delve
-
     # Rust
     rustup
 
