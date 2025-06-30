@@ -32,6 +32,7 @@
   ];
 
   langs = with pkgs; [
+  	golangci-lint-langserver
   	delve
     # Rust
     rustup
