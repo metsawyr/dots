@@ -32,6 +32,7 @@
   ];
 
   langs = with pkgs; [
+  	gopls
   	golangci-lint-langserver
   	delve
     # Rust
