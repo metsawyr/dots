@@ -32,6 +32,7 @@
   ];
 
   langs = with pkgs; [
+  	delve
     # Rust
     rustup
 
