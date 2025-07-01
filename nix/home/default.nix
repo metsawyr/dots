@@ -19,7 +19,6 @@
     htop
     jq
     minikube
-	mise
     neofetch
     nh
     pinentry
@@ -114,5 +113,10 @@ in {
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.mise = {
+	enable = true;
+	enableZshIntegration = true;
   };
 }
