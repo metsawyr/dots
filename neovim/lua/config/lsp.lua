@@ -37,7 +37,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 
 local lsp_configurations = {
-	bufls = {},
+	buf_ls = {},
 	nil_ls = {},
 	rust_analyzer = {},
 	-- golangci_lint_ls = {},
