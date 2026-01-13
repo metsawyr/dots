@@ -7,6 +7,7 @@
   imports = [
 	inputs.nixos-wsl.nixosModules.wsl
 	inputs.vscode-server.nixosModules.default
+	(fetchTarball "https://github.com/divyenduz/nixos-cursor-server/tarball/master")
   ];
 
   environment.systemPackages = [
@@ -20,4 +21,5 @@
 
   services.vscode-server.enable = true;
   services.vscode-server.enableFHS = true;
+  services.cursor-server.enable = true;
 }
