@@ -48,20 +48,28 @@
         home-wsl = mkWslSystem {
           hostname = "home";
         };
+
+        # Standalone Hyprland desktop. Rename "desktop" to the real hostname.
+        desktop = mkSystem {
+          hostname = "desktop";
+          extraModules = [./hosts/desktop];
+        };
       };
 
       homeConfigurations = {
         # Home NixOS WSL
-        "${user}@home-wsl" = mkHome {};
+        "${user}@home-wsl" = mkHome {
+          extraModules = [./home/profiles/wsl.nix];
+        };
 
         # Work Ubuntu WSL
         "${user}@es-mradetskyi" = mkHome {
-          extraModules = [
-            #		  	./config/nix.nix
-            {
-              targets.genericLinux.enable = true;
-            }
-          ];
+          extraModules = [./home/profiles/work.nix];
+        };
+
+        # Standalone Hyprland desktop
+        "${user}@desktop" = mkHome {
+          extraModules = [./home/profiles/desktop.nix];
         };
       };
 

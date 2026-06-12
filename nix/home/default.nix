@@ -4,24 +4,14 @@
   user,
   ...
 }: let
-  gcloud = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
-    gke-gcloud-auth-plugin
-    kubectl
-  ]);
-
   tools = with pkgs; [
-  	bazel_7
-	bazel-gazelle
-	bazel-buildtools
     code-minimap
     curl
     fd
-    fluxcd
     git
     gh
     htop
     jq
-    minikube
     neofetch
     nh
     pinentry
@@ -30,45 +20,8 @@
     unzip
     wget
     zip
-    gcloud
-  ];
 
-  langs = with pkgs; [
-    # Go
-    go
-    gopls
-    golangci-lint
-    golangci-lint-langserver
-    golines
-    gotests
-    delve
-
-    # Rust
-    rustup
-
-    # Protobuf
-    buf
-
-    # C
-    gcc
-    ccls
-
-	# Erlang
-	erlang
-	erlang-language-platform
-
-    # NodeJS
-    bun
-    nodePackages.typescript-language-server
-    nodePackages.prettier
-
-    # Lua
-    lua-language-server
-
-    # Nix
-    nil
-
-    # Other
+    # Editor LSPs paired with neovim
     yaml-language-server
     vscode-langservers-extracted # html, css, json, eslint
   ];
@@ -76,7 +29,7 @@ in {
   home = {
     stateVersion = "24.05";
 
-    packages = tools ++ langs;
+    packages = tools;
     sessionVariables = {
       EDITOR = "nvim";
       SHELL = "${pkgs.zsh}/bin/zsh";
@@ -84,12 +37,14 @@ in {
     };
   };
 
-  home.file.".local/bin/bazel_gopackagesdriver.sh" = {
-    source = ./shell/bazel_gopackagesdriver.sh;
-    executable = true;
-  };
-
-  imports = [inputs.nix-colors.homeManagerModules.default] ++ import ./programs;
+  imports =
+    [inputs.nix-colors.homeManagerModules.default]
+    ++ import ./programs
+    ++ [
+      ./features/langs
+      ./features/tools
+      ./features/desktop
+    ];
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-macchiato;
 
