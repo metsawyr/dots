@@ -49,10 +49,10 @@
           hostname = "home";
         };
 
-        # Standalone Hyprland desktop. Rename "desktop" to the real hostname.
-        desktop = mkSystem {
-          hostname = "desktop";
-          extraModules = [./hosts/desktop];
+        # Standalone Hyprland desktop.
+        home = mkSystem {
+          hostname = "home";
+          extraModules = [./hosts/home];
         };
       };
 
@@ -68,8 +68,8 @@
         };
 
         # Standalone Hyprland desktop
-        "${user}@desktop" = mkHome {
-          extraModules = [./home/profiles/desktop.nix];
+        "${user}@home" = mkHome {
+          extraModules = [./home/profiles/home.nix];
         };
       };
 
