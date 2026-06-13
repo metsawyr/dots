@@ -3,7 +3,6 @@
   dev.langs = {
     go.enable = true;
     rust.enable = true;
-    node.enable = true;
     c.enable = true;
     c3.enable = true;
     erlang.enable = true;

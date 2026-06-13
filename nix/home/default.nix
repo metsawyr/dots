@@ -23,7 +23,6 @@
 
     # Editor LSPs paired with neovim
     yaml-language-server
-    vscode-langservers-extracted # html, css, json, eslint
   ];
 in {
   home = {
