@@ -12,6 +12,7 @@ in {
     rust.enable = mkEnableOption "Rust toolchain";
     node.enable = mkEnableOption "Node/TS toolchain";
     c.enable = mkEnableOption "C toolchain";
+    c3.enable = mkEnableOption "C3 toolchain";
     erlang.enable = mkEnableOption "Erlang toolchain";
     lua.enable = mkEnableOption "Lua toolchain";
     nix.enable = mkEnableOption "Nix tooling";
@@ -42,6 +43,10 @@ in {
     })
     (mkIf cfg.c.enable {
       home.packages = with pkgs; [gcc ccls];
+    })
+    (mkIf cfg.c3.enable {
+      # Not in 24.11 stable; pull compiler + LSP from unstable.
+      home.packages = with pkgs.unstable; [c3c c3-lsp];
     })
     (mkIf cfg.erlang.enable {
       home.packages = with pkgs; [erlang erlang-language-platform];

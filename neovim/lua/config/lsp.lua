@@ -1,4 +1,12 @@
 require('neodev').setup()
+
+-- Neovim has no builtin c3 filetype; map extensions so the LSP attaches.
+vim.filetype.add({
+	extension = {
+		c3 = 'c3',
+		c3i = 'c3',
+	},
+})
 local lspconfig = require('lspconfig')
 local util = lspconfig.util
 
@@ -42,6 +50,10 @@ local lsp_configurations = {
 	rust_analyzer = {},
 	golangci_lint_ls = {},
 	elp = {},
+	-- nix package installs the binary as `c3-lsp`; lspconfig defaults to `c3lsp`.
+	c3_lsp = {
+		cmd = { 'c3-lsp' },
+	},
 	gopls = {
 		settings = {
 			gopls = {

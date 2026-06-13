@@ -7,7 +7,17 @@
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    overlays = builtins.attrValues (import ../overlays);
+    overlays =
+      builtins.attrValues (import ../overlays)
+      ++ [
+        # Expose nixpkgs-unstable as pkgs.unstable for packages missing/old in stable.
+        (final: prev: {
+          unstable = import inputs.nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        })
+      ];
   };
 
   lib = pkgs.lib.extend (final: prev: {
