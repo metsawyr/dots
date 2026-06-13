@@ -49,6 +49,7 @@
           vulkan-validation-layers
           vulkan-tools # vulkaninfo, vkcube
           shaderc # glslc for compiling shaders
+          glfw # windowing + surface creation
           pkg-config
         ];
 
