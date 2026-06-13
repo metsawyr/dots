@@ -21,3 +21,5 @@ vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = '[S]how [D
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev [D]iagnostic'})
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Prev [D]iagnostic'})
 
+-- Oil
+vim.keymap.set('n', '<leader>o', vim.cmd.Oil, { desc = '[O]il' })
