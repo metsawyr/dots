@@ -2,6 +2,7 @@ require('nvim-treesitter').setup()
 
 require('nvim-treesitter').install {
 	"c",
+	"c3",
 	"cmake",
 	"comment",
 	"cpp",
