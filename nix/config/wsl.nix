@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   user,
   ...
@@ -8,6 +9,15 @@
 	inputs.nixos-wsl.nixosModules.wsl
 	inputs.vscode-server.nixosModules.default
   ];
+
+  # nixos-wsl-utils Cargo.lock pins clap needing edition2024 (cargo >=1.85),
+  # but nixpkgs 24.11 ships cargo 1.82. Build it with unstable's rust toolchain.
+  system.build.nativeUtils = lib.mkForce (
+    pkgs.callPackage "${inputs.nixos-wsl}/utils" {
+      rustPlatform =
+        inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.rustPlatform;
+    }
+  );
 
   environment.systemPackages = [
     (import ./win32yank.nix {inherit pkgs;})
