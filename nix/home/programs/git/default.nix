@@ -3,22 +3,25 @@
     enable = true;
     package = pkgs.git;
 
-    delta.enable = true;
-    delta.options = {
-      line-numbers = true;
-      side-by-side = true;
-      navigate = true;
-    };
+    settings = {
+      user.email = "metsawyr@gmail.com";
+      user.name = "metsawyr";
 
-    userEmail = "metsawyr@gmail.com";
-    userName = "metsawyr";
-
-    extraConfig = {
       url = {
         "git@github.com:" = {
           insteadOf = "https://github.com/";
         };
       };
+    };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      line-numbers = true;
+      side-by-side = true;
+      navigate = true;
     };
   };
 
