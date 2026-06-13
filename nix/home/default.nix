@@ -14,7 +14,7 @@
     htop
     jq
     nh
-    pinentry
+    pinentry-curses
     ripgrep
     tree-sitter
     unzip
