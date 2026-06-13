@@ -41,6 +41,21 @@
         ];
         runScript = "${pkgs.zsh}/bin/zsh";
       };
+
+      vulkanShell = pkgs.mkShell {
+        packages = with pkgs; [
+          vulkan-headers # <vulkan/vulkan.h>
+          vulkan-loader # libvulkan.so to link (-lvulkan)
+          vulkan-validation-layers
+          vulkan-tools # vulkaninfo, vkcube
+          shaderc # glslc for compiling shaders
+          pkg-config
+        ];
+
+        # Force the WSLg/D3D12 ICD so we get the real GPU, not llvmpipe.
+        VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/dzn_icd.x86_64.json";
+        VK_LAYER_PATH = "${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d";
+      };
     in {
       formatter.${system} = pkgs.alejandra;
 
@@ -74,5 +89,6 @@
       };
 
       devShells."x86_64-linux".bazel = bazelShell.env;
+      devShells."x86_64-linux".vulkan = vulkanShell;
     };
 }
