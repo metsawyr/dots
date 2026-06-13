@@ -7,12 +7,12 @@
   tools = with pkgs; [
     code-minimap
     curl
+	fastfetch
     fd
     git
     gh
     htop
     jq
-    neofetch
     nh
     pinentry
     ripgrep
