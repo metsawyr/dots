@@ -37,6 +37,11 @@
   # Enable graphics stack (Mesa + Vulkan loader).
   hardware.graphics.enable = true;
 
+  # dzn (Vulkan-over-D3D12) dlopens libdxcore.so by soname, but the WSL driver
+  # dir isn't in the default ld path -> vkCreateInstance returns -3 and Vulkan
+  # falls back to llvmpipe. Put the driver dir on the loader path.
+  environment.sessionVariables.LD_LIBRARY_PATH = ["/run/opengl-driver/lib"];
+
   services.vscode-server.enable = true;
   services.vscode-server.enableFHS = true;
 }
