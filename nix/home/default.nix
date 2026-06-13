@@ -58,7 +58,7 @@ in {
 
   programs.lsd = {
     enable = true;
-    enableAliases = true;
+    enableZshIntegration = true;
   };
 
   programs.zoxide = {
