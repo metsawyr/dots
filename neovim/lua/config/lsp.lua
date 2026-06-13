@@ -7,10 +7,10 @@ vim.filetype.add({
 		c3i = 'c3',
 	},
 })
-local lspconfig = require('lspconfig')
-local util = lspconfig.util
-
-local search_bazel_workspace = util.root_pattern('WORKSPACE', 'WORKSPACE.bazel', 'MODULE')
+-- Find the enclosing Bazel workspace root (replaces lspconfig.util.root_pattern).
+local function search_bazel_workspace(path)
+	return vim.fs.root(path, { 'WORKSPACE', 'WORKSPACE.bazel', 'MODULE' })
+end
 
 local on_attach = function(_, bufnr)
 	local bufmap = function(keys, func, desc)
@@ -43,14 +43,19 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- Defaults merged into every server config (see :help lspconfig-nvim-0.11).
+vim.lsp.config('*', {
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 
 local lsp_configurations = {
-	bufls = {},
+	buf_ls = {},
 	nil_ls = {},
 	rust_analyzer = {},
 	golangci_lint_ls = {},
 	elp = {},
-	-- nix package installs the binary as `c3-lsp`; lspconfig defaults to `c3lsp`.
+	-- nix package installs the binary as `c3-lsp`; the default config uses `c3lsp`.
 	c3_lsp = {
 		cmd = { 'c3-lsp' },
 	},
@@ -113,14 +118,8 @@ local lsp_configurations = {
 };
 
 for lsp_name, config_overrides in pairs(lsp_configurations) do
-	lspconfig[lsp_name].setup(
-		vim.tbl_extend(
-			'force',
-			{
-				on_attach = on_attach,
-				capabilities = capabilities,
-			},
-			config_overrides
-		)
-	)
+	if next(config_overrides) ~= nil then
+		vim.lsp.config(lsp_name, config_overrides)
+	end
+	vim.lsp.enable(lsp_name)
 end
