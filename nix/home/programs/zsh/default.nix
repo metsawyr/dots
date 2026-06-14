@@ -42,7 +42,7 @@
          export PATH=$PATH:$HOME/.local/bin
     '';
 
-    initExtra = ''
+    initContent = ''
        function zle-keymap-select () {
       case $KEYMAP in
         vicmd) echo -ne '\e[1 q';; # block

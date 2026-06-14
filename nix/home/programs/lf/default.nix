@@ -12,7 +12,7 @@
   lfxTempFile = "/tmp/lfx_cwd_on_quit";
 in {
   programs.zsh.shellAliases.lf = "lfx";
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
        lfx() {
       tmp="${lfxTempFile}"
       ${pkgs.lf}/bin/lf "$@"
