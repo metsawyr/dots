@@ -11,6 +11,7 @@
     fd
     git
     gh
+	gnumake
     htop
     jq
     nh
