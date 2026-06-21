@@ -51,6 +51,7 @@ vim.lsp.config('*', {
 
 local lsp_configurations = {
 	buf_ls = {},
+	ccls = {},
 	nil_ls = {},
 	rust_analyzer = {},
 	golangci_lint_ls = {},
