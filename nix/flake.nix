@@ -51,7 +51,7 @@
           shaderc 
           glfw 
           pkg-config
-		  xorg.libxcb
+		  libxcb
         ];
 
         # Force the WSLg/D3D12 ICD so we get the real GPU, not llvmpipe.
