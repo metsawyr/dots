@@ -44,9 +44,20 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Defaults merged into every server config (see :help lspconfig-nvim-0.11).
+-- NOTE: an `on_attach` set on the '*' wildcard config is NOT called by Neovim,
+-- so the buffer-local keymaps are registered via an LspAttach autocmd instead.
+-- This is what makes goto-definition/references/etc. work for every server
+-- (ccls for C included).
 vim.lsp.config('*', {
 	capabilities = capabilities,
-	on_attach = on_attach,
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	desc = 'Set up LSP buffer-local keymaps',
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		on_attach(client, args.buf)
+	end,
 })
 
 local lsp_configurations = {
