@@ -1,18 +1,17 @@
-{pkgs, ...}: let
-  catppuccinYazi = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "yazi";
-    rev = "0846aed69b2a62d29c98e100af0cf55ca729723d";
-    sha256 = "2T41qWMe++3Qxl9veRNHMeRI3eU4+LAueKTss02gYNk=";
-  };
-  # Newer yazi renamed the `[filetype]` rule key `name` to `url`; this pinned
-  # catppuccin theme predates that change, so patch it to avoid the
-  # "at least one of `url` or `mime` must be specified" TOML parse error.
-  yaziTheme =
-    builtins.replaceStrings ["name ="] ["url ="]
-    (builtins.readFile (catppuccinYazi + "/themes/macchiato.toml"));
-in {
-  xdg.configFile."yazi/theme.toml".text = yaziTheme;
+{pkgs, ...}: {
+  # catppuccin/yazi ships a ready-to-use theme.toml per flavor/accent under
+  # themes/<flavor>/. We use the macchiato "blue" accent to match the previous
+  # theme. The old pinned rev used the legacy single-file format (`[manager]`,
+  # `name =` rules) which newer yazi rejects, so this points at the current
+  # repo layout that targets recent yazi releases.
+  xdg.configFile."yazi/theme.toml".source =
+    pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "yazi";
+      rev = "baaf5d1c9427b836fbefd126aa855f9eab7a9d0d";
+      sha256 = "1260viasyxmdldbpg2nwj7wmdb2rzi9v1i1rscj2829vrnj8191g";
+    }
+    + "/themes/macchiato/catppuccin-macchiato-blue.toml";
 
   programs.yazi = {
     enable = true;
