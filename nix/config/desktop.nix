@@ -3,18 +3,10 @@
   user,
   ...
 }: {
-  # Hyprland session + xdg portals.
   programs.hyprland.enable = true;
   xdg.portal.enable = true;
 
   hardware.graphics.enable = true;
-
-  # VM-friendly: let wlroots fall back to software rendering (llvmpipe) and
-  # avoid hardware cursor planes the virtual GPU may not support.
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-  };
 
   services.pipewire = {
     enable = true;
