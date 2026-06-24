@@ -16,11 +16,10 @@
 
   fonts.packages = [pkgs.nerd-fonts.inconsolata];
 
-  # No greeter: autologin on TTY, exec Hyprland on tty1.
   services.getty.autologinUser = user;
   programs.zsh.loginShellInit = ''
     if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec Hyprland
+      Hyprland
     fi
   '';
 }
