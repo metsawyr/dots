@@ -8,6 +8,7 @@ lib.mkIf config.dev.desktop.hyprland.enable {
   home.packages = with pkgs; [
     kitty # terminal
     wofi # launcher
+	google-chrome
   ];
 
   wayland.windowManager.hyprland = {
