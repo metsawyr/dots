@@ -22,11 +22,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/media/sf_mnt" =
-    { device = "mnt";
-      fsType = "vboxsf";
-    };
-
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
