@@ -22,9 +22,7 @@
     pulse.enable = true;
   };
 
-  fonts.packages = [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
-  ];
+  fonts.packages = [pkgs.nerd-fonts.inconsolata];
 
   # No greeter: autologin on TTY, exec Hyprland on tty1.
   services.getty.autologinUser = user;
