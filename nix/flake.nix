@@ -62,7 +62,7 @@
         ];
 
         shellHook = ''
-          exec "$SHELL"
+          exec ${pkgs.zsh}/bin/zsh
         '';
       };
     in {
