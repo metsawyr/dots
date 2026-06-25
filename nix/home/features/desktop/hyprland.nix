@@ -6,9 +6,13 @@
 }:
 lib.mkIf config.dev.desktop.hyprland.enable {
   home.packages = with pkgs; [
-    kitty # terminal
-    wofi # launcher
+    kitty
 	google-chrome
+	telegram-desktop
+	discord
+	blender
+	godot	
+	steam
   ];
 
   wayland.windowManager.hyprland = {
