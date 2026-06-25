@@ -2,6 +2,7 @@
   programs.kitty = {
     enable = true;
     settings = {
+      window_padding_width = 8;
       foreground = "#CAD3F5";
       background = "#24273A";
       selection_foreground = "#24273A";
