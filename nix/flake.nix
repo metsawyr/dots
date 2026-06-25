@@ -25,6 +25,11 @@
     };
 
 	vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/legacy-v4";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = {self, ...} @ inputs:

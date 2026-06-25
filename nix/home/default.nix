@@ -38,7 +38,7 @@ in {
   };
 
   imports =
-    [inputs.nix-colors.homeManagerModules.default]
+    [inputs.nix-colors.homeManagerModules.default inputs.noctalia.homeModules.default]
     ++ import ./programs
     ++ [
       ./features/langs

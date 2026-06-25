@@ -22,7 +22,7 @@ lib.mkIf config.dev.desktop.hyprland.enable {
       monitor = ",preferred,auto,1";
 
       exec-once = [
-        "waybar"
+        "noctalia-shell"
       ];
 
       bind = [
