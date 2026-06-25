@@ -22,6 +22,16 @@ lib.mkIf config.dev.desktop.hyprland.enable {
 
       monitor = ",preferred,auto,1";
 
+      general = {
+        border_size = 2;
+        "col.active_border" = "rgba(b7bdf8ff)";
+        "col.inactive_border" = "rgba(6e738dff)";
+      };
+
+      decoration = {
+        rounding = 8;
+      };
+
       exec-once = [
         "noctalia-shell"
       ];

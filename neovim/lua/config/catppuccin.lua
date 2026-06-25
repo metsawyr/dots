@@ -8,6 +8,7 @@ require('catppuccin').setup {
 		treesitter = true,
 		telescope = true,
 		harpoon = true,
+		mason = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {},

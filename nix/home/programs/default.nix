@@ -1,6 +1,7 @@
 [
   ./git
   ./gpg
+  ./kitty
   ./lf
   ./k9s
   ./neovim
