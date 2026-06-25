@@ -61,9 +61,9 @@
           libxkbcommon
         ];
 
-        # Force the WSLg/D3D12 ICD so we get the real GPU, not llvmpipe.
-        VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/dzn_icd.x86_64.json";
-        VK_LAYER_PATH = "${pkgs.vulkan-validation-layers}/share/vulkan/explicit_layer.d";
+        shellHook = ''
+          exec "$SHELL"
+        '';
       };
     in {
       formatter.${system} = pkgs.alejandra;
