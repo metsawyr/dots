@@ -19,7 +19,7 @@
   services.getty.autologinUser = user;
   programs.zsh.loginShellInit = ''
     if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-      Hyprland
+      start-hyprland
     fi
   '';
 
