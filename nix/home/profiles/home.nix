@@ -7,6 +7,7 @@
   dev.langs = {
     go.enable = true;
     rust.enable = true;
+    c.enable = true;
     nix.enable = true;
     lua.enable = true;
   };

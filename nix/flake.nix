@@ -49,14 +49,16 @@
 
       vulkanShell = pkgs.mkShell {
         packages = with pkgs; [
-          vulkan-headers 
-          vulkan-loader 
+          vulkan-headers
+          vulkan-loader
           vulkan-validation-layers
-          vulkan-tools 
-          shaderc 
-          glfw 
+          vulkan-tools
+          shaderc
+          glfw
           pkg-config
-		  libxcb
+          wayland
+          wayland-protocols
+          libxkbcommon
         ];
 
         # Force the WSLg/D3D12 ICD so we get the real GPU, not llvmpipe.
