@@ -26,6 +26,13 @@ lib.mkIf config.dev.desktop.hyprland.enable {
 
       monitor = ",preferred,auto,1";
 
+      env = [
+        "LIBVA_DRIVER_NAME,nvidia"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "GBM_BACKEND,nvidia-drm"
+        "NVD_BACKEND,direct"
+      ];
+
       input = {
         kb_layout = "us,ua";
         kb_options = "grp:alt_shift_toggle";
