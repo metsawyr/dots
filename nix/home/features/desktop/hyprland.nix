@@ -26,6 +26,11 @@ lib.mkIf config.dev.desktop.hyprland.enable {
 
       monitor = ",preferred,auto,1";
 
+      input = {
+        kb_layout = "us,ua";
+        kb_options = "grp:alt_shift_toggle";
+      };
+
       general = {
         border_size = 2;
         "col.active_border" = "rgba(b7bdf8ff)";
