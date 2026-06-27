@@ -1,13 +1,12 @@
 require('neodev').setup()
 
--- Neovim has no builtin c3 filetype; map extensions so the LSP attaches.
 vim.filetype.add({
 	extension = {
 		c3 = 'c3',
 		c3i = 'c3',
 	},
 })
--- Find the enclosing Bazel workspace root (replaces lspconfig.util.root_pattern).
+
 local function search_bazel_workspace(path)
 	return vim.fs.root(path, { 'WORKSPACE', 'WORKSPACE.bazel', 'MODULE' })
 end
@@ -43,11 +42,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Defaults merged into every server config (see :help lspconfig-nvim-0.11).
--- NOTE: an `on_attach` set on the '*' wildcard config is NOT called by Neovim,
--- so the buffer-local keymaps are registered via an LspAttach autocmd instead.
--- This is what makes goto-definition/references/etc. work for every server
--- (ccls for C included).
 vim.lsp.config('*', {
 	capabilities = capabilities,
 })
@@ -67,7 +61,7 @@ local lsp_configurations = {
 	rust_analyzer = {},
 	golangci_lint_ls = {},
 	elp = {},
-	-- nix package installs the binary as `c3-lsp`; the default config uses `c3lsp`.
+	gdscript = {},
 	c3_lsp = {
 		cmd = { 'c3-lsp' },
 	},
