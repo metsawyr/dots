@@ -20,7 +20,7 @@
   hardware.opengl = {
     enable = true;
 	driSupport = true;
-	driSupport32bit = true;
+	driSupport32Bit = true;
   };
 
   services.pipewire = {
@@ -42,4 +42,10 @@
   hardware.bluetooth.enable = true;
   services.tuned.enable = true;
   services.upower.enable = true;
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+  programs.gamemode.enable = true;
 }

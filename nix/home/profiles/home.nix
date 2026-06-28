@@ -8,15 +8,7 @@
 	protonup
 	lutris
 	bottles
-	
   ];
-
-  programs.steam = {
-	enable = true;
-	gamescopeSession.enable = true;
-  };
-
-  programs.gamemode.enable = true;
 
   dev.langs = {
     go.enable = true;

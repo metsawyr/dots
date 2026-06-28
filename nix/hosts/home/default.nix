@@ -15,5 +15,5 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # isNormalUser/shell/zsh come from config/nix.nix; only add desktop groups.
-  users.users.${user}.extraGroups = ["wheel" "video" "input" "audio"];
+  users.users.${user}.extraGroups = ["wheel" "video" "input" "audio" "gamemode"];
 }
