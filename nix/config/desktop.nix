@@ -37,7 +37,10 @@
     fi
   '';
 
-  networking.networkmanager.enable = true;  
+  networking.networkmanager.enable = true;
+  services.tailscale.enable = true;
+  networking.firewall.checkReversePath = "loose";
+
   hardware.bluetooth.enable = true;
   services.tuned.enable = true;
   services.upower.enable = true;

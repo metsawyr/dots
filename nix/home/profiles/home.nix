@@ -8,6 +8,7 @@
 	protonup-ng
 	lutris
 	bottles
+	remmina
   ];
 
   dev.langs = {
