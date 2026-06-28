@@ -5,7 +5,7 @@
   home.packages = with pkgs; [
 	unstable.claude-code
 	mangohud
-	protonup
+	protonup-ng
 	lutris
 	bottles
   ];
