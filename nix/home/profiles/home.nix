@@ -2,7 +2,21 @@
   # Standalone Hyprland desktop — personal subset, no work tooling.
   dev.desktop.hyprland.enable = true;
 
-  home.packages = [pkgs.unstable.claude-code];
+  home.packages = with pkgs; [
+	unstable.claude-code
+	mangohud
+	protonup
+	lutris
+	bottles
+	
+  ];
+
+  programs.steam = {
+	enable = true;
+	gamescopeSession.enable = true;
+  };
+
+  programs.gamemode.enable = true;
 
   dev.langs = {
     go.enable = true;

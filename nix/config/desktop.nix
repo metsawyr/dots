@@ -17,6 +17,12 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  hardware.opengl = {
+    enable = true;
+	driSupport = true;
+	driSupport32bit = true;
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;

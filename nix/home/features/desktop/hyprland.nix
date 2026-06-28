@@ -12,7 +12,6 @@ lib.mkIf config.dev.desktop.hyprland.enable {
 	discord
 	blender
 	godot	
-	steam
   ];
 
   wayland.windowManager.hyprland = {
