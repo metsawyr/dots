@@ -21,7 +21,7 @@ lib.mkIf config.dev.desktop.hyprland.enable {
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "kitty";
-      "$menu" = "wofi --show drun";
+      "$menu" = "noctalia-shell ipc call launcher toggle";
 
       monitor = ",preferred,auto,1";
 
