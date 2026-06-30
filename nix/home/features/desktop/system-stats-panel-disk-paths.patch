@@ -1,0 +1,83 @@
+--- a/Modules/Panels/SystemStats/SystemStatsPanel.qml
++++ b/Modules/Panels/SystemStats/SystemStatsPanel.qml
+@@ -21,15 +21,6 @@
+     property real contentPreferredHeight: mainColumn.implicitHeight + Style.margin2L
+     readonly property real cardHeight: 90 * Style.uiScaleRatio
+ 
+-    // Get diskPath from bar's SystemMonitor widget if available, otherwise use "/"
+-    readonly property string diskPath: {
+-      const sysMonWidget = BarService.lookupWidget("SystemMonitor");
+-      if (sysMonWidget && sysMonWidget.diskPath) {
+-        return sysMonWidget.diskPath;
+-      }
+-      return "/";
+-    }
+-
+     ColumnLayout {
+       id: mainColumn
+       anchors.fill: parent
+@@ -338,35 +329,39 @@
+             }
+           }
+ 
+-          // Disk usage
+-          RowLayout {
+-            Layout.fillWidth: true
+-            spacing: Style.marginS
++          // Disk usage for /, /nix, /home
++          Repeater {
++            model: ["/", "/nix", "/home"]
++            delegate: RowLayout {
++              required property string modelData
++              Layout.fillWidth: true
++              spacing: Style.marginS
+ 
+-            NIcon {
+-              icon: "storage"
+-              pointSize: Style.fontSizeM
+-              color: Color.mPrimary
+-            }
++              NIcon {
++                icon: "storage"
++                pointSize: Style.fontSizeM
++                color: Color.mPrimary
++              }
+ 
+-            NText {
+-              text: I18n.tr("system-monitor.disk") + ":"
+-              pointSize: Style.fontSizeXS
+-              color: Color.mOnSurfaceVariant
+-            }
++              NText {
++                text: modelData + ":"
++                pointSize: Style.fontSizeXS
++                color: Color.mOnSurfaceVariant
++              }
+ 
+-            NText {
+-              text: {
+-                const usedGb = SystemStatService.diskUsedGb[panelContent.diskPath] || 0;
+-                const sizeGb = SystemStatService.diskSizeGb[panelContent.diskPath] || 0;
+-                const percent = SystemStatService.diskPercents[panelContent.diskPath] || 0;
+-                return `${percent}% (${usedGb.toFixed(1)} / ${sizeGb.toFixed(1)} GB)`;
++              NText {
++                text: {
++                  const usedGb = SystemStatService.diskUsedGb[modelData] || 0;
++                  const sizeGb = SystemStatService.diskSizeGb[modelData] || 0;
++                  const percent = SystemStatService.diskPercents[modelData] || 0;
++                  return `${percent}% (${usedGb.toFixed(1)} / ${sizeGb.toFixed(1)} GB)`;
++                }
++                pointSize: Style.fontSizeXS
++                color: Color.mOnSurface
++                Layout.fillWidth: true
++                horizontalAlignment: Text.AlignRight
++                elide: Text.ElideMiddle
+               }
+-              pointSize: Style.fontSizeXS
+-              color: Color.mOnSurface
+-              Layout.fillWidth: true
+-              horizontalAlignment: Text.AlignRight
+-              elide: Text.ElideMiddle
+             }
+           }
+ 
