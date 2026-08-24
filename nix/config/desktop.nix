@@ -43,6 +43,11 @@
   services.tuned.enable = true;
   services.upower.enable = true;
 
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
+
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
