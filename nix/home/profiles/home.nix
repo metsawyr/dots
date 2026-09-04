@@ -9,6 +9,7 @@
 	lutris
 	bottles
 	remmina
+	ardour
   ];
 
   dev.langs = {
