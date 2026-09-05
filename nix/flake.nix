@@ -65,6 +65,20 @@
           exec ${pkgs.zsh}/bin/zsh
         '';
       };
+
+	  raylibShell = pkgs.mkShell {
+		packages = with pkgs.unstable; [
+		  libGL
+		];
+
+		LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+		  pkgs.unstable.alsa-lib
+		];
+
+        shellHook = ''
+          exec ${pkgs.zsh}/bin/zsh
+        '';
+	  };
     in {
       formatter.${system} = pkgs.alejandra;
 
@@ -99,5 +113,6 @@
 
       devShells."x86_64-linux".bazel = bazelShell.env;
       devShells."x86_64-linux".vulkan = vulkanShell;
+	  devShells."x86_64-linux".raylib = raylibShell;
     };
 }
