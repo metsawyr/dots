@@ -69,6 +69,10 @@
 	  raylibShell = pkgs.mkShell {
 		packages = with pkgs.unstable; [
 		  libGL
+          wayland
+          wayland-scanner
+          wayland-protocols
+          libxkbcommon
 		];
 
 		LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
