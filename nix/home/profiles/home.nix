@@ -10,6 +10,7 @@
 	bottles
 	remmina
 	ardour
+	gdb
   ];
 
   dev.langs = {
