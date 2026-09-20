@@ -23,9 +23,10 @@ in {
 	gdb
   ];
 
-  programs.vscode = {
+  # programs.vscode writes Visual Studio Code's paths (~/.vscode, Code/User);
+  # forks get their own module, so Codium needs this one to see the extensions.
+  programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium;
     profiles.default = {
       extensions = [
         ccls
