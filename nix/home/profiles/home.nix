@@ -1,15 +1,23 @@
-{pkgs, ...}: let
-  # Not packaged in nixpkgs' vscode-extensions set; pulled from the marketplace.
-  ccls = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "ccls-project";
-      name = "ccls";
-      version = "0.1.30";
-      hash = "sha256-OALPrPboOyvy5JqdGKvH5mEkY8N07S/k2r37Eh86otI=";
-    };
-  };
+{
+  pkgs,
+  config,
+  user,
+  ...
+}: let
+  # reinstall all extensions the same way lazy does this in neovim
+  codium-ext = pkgs.writeShellScriptBin "codium-ext" ''
+    set -euo pipefail
+    list="/home/${user}/dots/codium/extensions.txt"
+    case "''${1-restore}" in
+      restore) xargs -r -n1 codium --force --install-extension < "$list" ;;
+      save) codium --list-extensions > "$list" ;;
+      *)
+        echo "usage: codium-ext [restore|save]" >&2
+        exit 1
+        ;;
+    esac
+  '';
 in {
-  # Standalone Hyprland desktop — personal subset, no work tooling.
   dev.desktop.hyprland.enable = true;
 
   home.packages = with pkgs; [
@@ -21,22 +29,23 @@ in {
 	remmina
 	ardour
 	gdb
+	codium-ext
   ];
 
-  # programs.vscode writes Visual Studio Code's paths (~/.vscode, Code/User);
-  # forks get their own module, so Codium needs this one to see the extensions.
   programs.vscodium = {
     enable = true;
-    profiles.default = {
-      extensions = [
-        ccls
-        pkgs.vscode-extensions.catppuccin.catppuccin-vsc
-      ];
-      userSettings = {
-        "workbench.colorTheme" = "Catppuccin Macchiato";
-        "ccls.launch.command" = "${pkgs.ccls}/bin/ccls";
-      };
-    };
+    package = pkgs.vscodium-fhs;
+    mutableExtensionsDir = true;
+  };
+
+  # symlink codium config files same way as neovim's plugins
+  xdg.configFile = with config.lib.file; {
+    "VSCodium/User/settings.json".source =
+      mkOutOfStoreSymlink "/home/${user}/dots/codium/settings.json";
+    "VSCodium/User/keybindings.json".source =
+      mkOutOfStoreSymlink "/home/${user}/dots/codium/keybindings.json";
+    "VSCodium/User/snippets".source =
+      mkOutOfStoreSymlink "/home/${user}/dots/codium/snippets";
   };
 
   dev.langs = {
