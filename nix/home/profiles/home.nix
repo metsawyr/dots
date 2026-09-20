@@ -11,6 +11,7 @@
 	remmina
 	ardour
 	gdb
+	vscodium
   ];
 
   dev.langs = {
