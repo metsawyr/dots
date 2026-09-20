@@ -1,4 +1,6 @@
 {
   "workbench.colorTheme": "Catppuccin Macchiato",
-  "ccls.launch.command": "ccls"
+  "ccls.launch.command": "ccls",
+  "ccls.highlight": false,
+  "editor.semanticHighlighting.enabled": false,
 }
