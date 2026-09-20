@@ -35,17 +35,10 @@ lib.mkIf config.dev.desktop.hyprland.enable {
       input = {
         kb_layout = "us,ua";
         kb_options = "grp:alt_shift_toggle";
-
-        # raw 1:1 pointer deltas for FPS games under XWayland
-        accel_profile = "flat";
-        force_no_accel = true;
-        sensitivity = 0;
         follow_mouse = 2;
       };
 
       cursor = {
-        # warping the locked cursor reaches XWayland as one huge relative
-        # delta, which games read as an instant camera snap
         no_warps = true;
         hide_on_key_press = false;
       };
